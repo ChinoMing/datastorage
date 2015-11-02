@@ -36,11 +36,11 @@ DataStorage.prototype.init = function (cb) {
   }
   if (typeof window !== 'undefined') return end()
   
-  if(settings.redisPort != ""){
-    self.redisClient = redis.createClient(self.redisPort, self.redisHost)
-  } else {
+  //if(settings.redisPort != ""){
+    //self.redisClient = redis.createClient(self.redisPort, self.redisHost)
+  //} else {
     self.redisClient = redis.createClient(self.redisUrl)
-  }
+  //}
   self.redisClient.on('error', function (err) {
     // if (err) console.error('Redis err: ' + err)
     self.redisClient.end()
