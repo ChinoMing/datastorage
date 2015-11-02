@@ -9,6 +9,7 @@ function FileSystem (callback) {
   self.appPath = path.datadir('DataStorage')
   self.configFile = path.join(self.appPath, 'properties.conf')
 
+console.log('Hello from World');
   if (callback) {
     jf.readFile(self.configFile, function (err, conf) {
       if (err) {
