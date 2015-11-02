@@ -9,13 +9,19 @@ function FileSystem (callback) {
   self.appPath = path.datadir('DataStorage')
   self.configFile = path.join(self.appPath, 'properties.conf')
 
-console.log('Hello from World');
+console.log('1');
   if (callback) {
+console.log('2');
     jf.readFile(self.configFile, function (err, conf) {
+      console.log('3');
       if (err) {
+        console.log('4');
         self.conf = {}
+        console.log('5');
         safePathWrite(self.configFile, self.conf, function (err) {
+          console.log('6');
           if (err) return callback(err)
+          console.log('7');
           return callback(null, self)
         })
       }
