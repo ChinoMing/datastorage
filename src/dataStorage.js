@@ -16,6 +16,7 @@ var DataStorage = function (settings) {
 
   self.redisPort = settings.redisPort || 6379
   self.redisHost = settings.redisHost || '127.0.0.1'
+  self.redisUrl = settings.redisUrl || 'redis://user:pass@host:port';
 }
 
 util.inherits(DataStorage, events.EventEmitter)
@@ -34,7 +35,12 @@ DataStorage.prototype.init = function (cb) {
     }
   }
   if (typeof window !== 'undefined') return end()
-  self.redisClient = redis.createClient(self.redisPort, self.redisHost)
+  
+  if(settings.redisPort != ""){
+    self.redisClient = redis.createClient(self.redisPort, self.redisHost)
+  } else {
+    self.redisClient = redis.createClient(self.redisUrl)
+  }
   self.redisClient.on('error', function (err) {
     // if (err) console.error('Redis err: ' + err)
     self.redisClient.end()
