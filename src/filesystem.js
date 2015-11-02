@@ -29,8 +29,11 @@ console.log('2');
       return callback(null, self)
     })
   } else {
+    console.log('8');
     self.conf = jf.readFileSync(self.configFile, {throws: false})
+    console.log('9');
     if (!self.conf) {
+      console.log('10');
       self.conf = {}
       safePathWrite(self.configFile, self.conf)
     }
