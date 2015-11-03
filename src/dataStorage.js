@@ -27,7 +27,7 @@ DataStorage.prototype.init = function (cb) {
   var once = true
   var end = function () {
     self.hasRedis = false
-    self.fs = new FileSystem()
+    self.fs = new FileSystem(true)
     self.emit('connect')
     if (cb && once) {
       once = false
